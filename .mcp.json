@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp",
+        "--api-key",
+        "ctx7sk-402e720a-393f-4d88-8e1d-777f24c19155"
+      ],
+      "env": {
+        "CONTEXT7_API_KEY": "ctx7sk-402e720a-393f-4d88-8e1d-777f24c19155"
+      }
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ],
+      "env": {}
+    }
+  }
+}
