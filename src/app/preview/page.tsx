@@ -44,6 +44,14 @@ export default function Preview() {
         <Button variant="danger" onClick={() => console.log('Danger clicked')}>
           Danger Button
         </Button>
+
+        <Button variant="black" onClick={() => console.log('Black clicked')}>
+          Black Button
+        </Button>
+
+        <Button variant="white" onClick={() => console.log('White clicked')}>
+          White Button
+        </Button>
       </div>
 
       <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Disabled States</h3>
