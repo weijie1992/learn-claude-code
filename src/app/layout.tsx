@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import DarkModeToggle from "@/components/DarkModeToggle";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Shinobi",
@@ -16,9 +17,16 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <header className="flex justify-between items-center p-4 bg-surface border-b border-border">
-          <h1 className="text-3xl font-semibold m-0 text-foreground">
-            Shinobi
-          </h1>
+          <div className="flex items-center gap-6">
+            <h1 className="text-3xl font-semibold m-0 text-foreground">
+              Shinobi
+            </h1>
+            <nav className="flex gap-4">
+              <Link href="/about" className="text-muted hover:text-foreground transition-colors">
+                About
+              </Link>
+            </nav>
+          </div>
           <DarkModeToggle />
         </header>
         {children}
