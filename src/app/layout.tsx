@@ -22,6 +22,12 @@ export default function RootLayout({
               Shinobi
             </h1>
             <nav className="flex gap-4">
+              <Link href="/blog" className="text-muted hover:text-foreground transition-colors">
+                Blog
+              </Link>
+              <Link href="/preview" className="text-muted hover:text-foreground transition-colors">
+                Preview
+              </Link>
               <Link href="/about" className="text-muted hover:text-foreground transition-colors">
                 About
               </Link>
