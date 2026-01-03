@@ -1,7 +1,17 @@
 "use client";
+import { useState } from "react";
 import Button from "@/components/ui/Button/Button";
+import WeijieModal from "@/components/ui/WeijieModal/WeijieModal";
 
 export default function Preview() {
+  const [primaryModalOpen, setPrimaryModalOpen] = useState(false);
+  const [secondaryModalOpen, setSecondaryModalOpen] = useState(false);
+  const [successModalOpen, setSuccessModalOpen] = useState(false);
+  const [dangerModalOpen, setDangerModalOpen] = useState(false);
+  const [warningModalOpen, setWarningModalOpen] = useState(false);
+  const [smallModalOpen, setSmallModalOpen] = useState(false);
+  const [largeModalOpen, setLargeModalOpen] = useState(false);
+  const [disabledModalOpen, setDisabledModalOpen] = useState(false);
   return (
     <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'flex-start' }}>
       <section>
@@ -120,6 +130,165 @@ export default function Preview() {
             This is smaller text in muted color, perfect for captions or secondary information.
           </p>
         </div>
+      </section>
+
+      <section style={{ marginTop: '3rem' }}>
+        <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>WeijieModal Component</h2>
+        <p style={{ marginBottom: '1.5rem', maxWidth: '500px' }}>
+          A clean and modern modal component with multiple variants, sizes, and features including backdrop click, ESC key support, and disabled states.
+        </p>
+
+        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Modal Variants</h3>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
+          <Button variant="primary" onClick={() => setPrimaryModalOpen(true)}>
+            Primary Modal
+          </Button>
+          <Button variant="secondary" onClick={() => setSecondaryModalOpen(true)}>
+            Secondary Modal
+          </Button>
+          <Button variant="success" onClick={() => setSuccessModalOpen(true)}>
+            Success Modal
+          </Button>
+          <Button variant="warning" onClick={() => setWarningModalOpen(true)}>
+            Warning Modal
+          </Button>
+          <Button variant="danger" onClick={() => setDangerModalOpen(true)}>
+            Danger Modal
+          </Button>
+        </div>
+
+        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Modal Sizes</h3>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
+          <Button variant="primary" onClick={() => setSmallModalOpen(true)}>
+            Small Modal
+          </Button>
+          <Button variant="primary" onClick={() => setLargeModalOpen(true)}>
+            Large Modal
+          </Button>
+        </div>
+
+        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Disabled State</h3>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <Button variant="primary" onClick={() => setDisabledModalOpen(true)}>
+            Disabled Modal
+          </Button>
+        </div>
+
+        {/* Modal instances */}
+        <WeijieModal
+          isOpen={primaryModalOpen}
+          onClose={() => setPrimaryModalOpen(false)}
+          title="Primary Modal"
+          variant="primary"
+          footer={
+            <>
+              <Button variant="secondary" onClick={() => setPrimaryModalOpen(false)}>
+                Cancel
+              </Button>
+              <Button variant="primary" onClick={() => setPrimaryModalOpen(false)}>
+                Confirm
+              </Button>
+            </>
+          }
+        >
+          <p>This is a primary variant modal with a clean, modern design. It features a purple accent border and includes both a title and footer with action buttons.</p>
+        </WeijieModal>
+
+        <WeijieModal
+          isOpen={secondaryModalOpen}
+          onClose={() => setSecondaryModalOpen(false)}
+          title="Secondary Modal"
+          variant="secondary"
+        >
+          <p>This is a secondary variant modal. Notice the different border color that matches our theme's secondary color.</p>
+        </WeijieModal>
+
+        <WeijieModal
+          isOpen={successModalOpen}
+          onClose={() => setSuccessModalOpen(false)}
+          title="Success!"
+          variant="success"
+          footer={
+            <Button variant="success" onClick={() => setSuccessModalOpen(false)}>
+              Great!
+            </Button>
+          }
+        >
+          <p>Your action was completed successfully! This modal uses the success variant with a green accent border.</p>
+        </WeijieModal>
+
+        <WeijieModal
+          isOpen={warningModalOpen}
+          onClose={() => setWarningModalOpen(false)}
+          title="Warning"
+          variant="warning"
+          footer={
+            <>
+              <Button variant="secondary" onClick={() => setWarningModalOpen(false)}>
+                Cancel
+              </Button>
+              <Button variant="warning" onClick={() => setWarningModalOpen(false)}>
+                Proceed
+              </Button>
+            </>
+          }
+        >
+          <p>Please review this warning carefully before proceeding. This modal uses the warning variant with an orange accent border.</p>
+        </WeijieModal>
+
+        <WeijieModal
+          isOpen={dangerModalOpen}
+          onClose={() => setDangerModalOpen(false)}
+          title="Danger Zone"
+          variant="danger"
+          footer={
+            <>
+              <Button variant="secondary" onClick={() => setDangerModalOpen(false)}>
+                Cancel
+              </Button>
+              <Button variant="danger" onClick={() => setDangerModalOpen(false)}>
+                Delete
+              </Button>
+            </>
+          }
+        >
+          <p>This action is destructive and cannot be undone. This modal uses the danger variant with a red accent border to indicate the severity of the action.</p>
+        </WeijieModal>
+
+        <WeijieModal
+          isOpen={smallModalOpen}
+          onClose={() => setSmallModalOpen(false)}
+          title="Small Modal"
+          size="sm"
+        >
+          <p>This is a small modal, perfect for quick confirmations or brief messages.</p>
+        </WeijieModal>
+
+        <WeijieModal
+          isOpen={largeModalOpen}
+          onClose={() => setLargeModalOpen(false)}
+          title="Large Modal"
+          size="lg"
+        >
+          <p>This is a large modal with more space for content. It's ideal for forms, detailed information, or complex interactions.</p>
+          <p style={{ marginTop: '1rem' }}>You can add multiple paragraphs and the modal will scroll if the content exceeds the maximum height.</p>
+          <p style={{ marginTop: '1rem' }}>The modal supports backdrop clicks and ESC key to close, making it easy for users to dismiss when needed.</p>
+        </WeijieModal>
+
+        <WeijieModal
+          isOpen={disabledModalOpen}
+          onClose={() => setDisabledModalOpen(false)}
+          title="Disabled Modal"
+          disabled
+        >
+          <p>This modal is in a disabled state. Notice that the close button is hidden and clicking the backdrop or pressing ESC won't close it.</p>
+          <p style={{ marginTop: '1rem' }}>This is useful for preventing users from dismissing important dialogs or when processing an action.</p>
+          <div style={{ marginTop: '1.5rem' }}>
+            <Button variant="primary" onClick={() => setDisabledModalOpen(false)}>
+              Force Close
+            </Button>
+          </div>
+        </WeijieModal>
       </section>
     </div>
   );
