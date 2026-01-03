@@ -18,9 +18,11 @@ export default function RootLayout({
       <body>
         <header className="flex justify-between items-center p-4 bg-surface border-b border-border">
           <div className="flex items-center gap-6">
-            <h1 className="text-3xl font-semibold m-0 text-foreground">
-              Shinobi
-            </h1>
+            <Link href="/">
+              <h1 className="text-3xl font-semibold m-0 text-foreground cursor-pointer hover:opacity-80 transition-opacity">
+                Shinobi
+              </h1>
+            </Link>
             <nav className="flex gap-4">
               <Link href="/blog" className="text-muted hover:text-foreground transition-colors">
                 Blog
